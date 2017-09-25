@@ -1,6 +1,8 @@
 # MIDAS
 MATLAB Integrated Data Analysis Suite for UNLV's SAE Baja Team
 
+<img src ="https://www.unlv.edu/sites/default/files/articles/main-images/California.JPG" height = "250">
+
 ### Welcome,
 
 This is Rebel Racing's first expedition into creating a MATLAB application to load, clean, organize, and analyze racing data. We hope that this project will allow us to more rapidly analyze our data collection, and use the information we gain to make  meaningful decisions on the future of the car. Of course, if you have any questions you can always email me at ayalat1@unlv.nevada.edu
@@ -40,5 +42,36 @@ Year,Make,Model
 ```
 
 ## Our Project
-
 The goal of this project is to create a comprehensive [MATLAB Toolbox](https://www.mathworks.com/help/matlab/matlab_prog/create-and-share-custom-matlab-toolboxes.html) that will include functions, an app (or two), simulations, and mathematical models for processing and visualizing the data that we get from our Baja car. This will require us to import our '.log' files, clean the file, munge through it and squeeze out all the significant bits, and then return our findings to the user in a report. The reports and summaries of the data that we collect will be kept as records for future use and reference. Once we get our reports handled to an adequate degree, we can start working on serving the information out to the user in more creative or fun ways like live graphs or other visual aids. You can read about making GUI applications with MATLAB, [here](https://www.mathworks.com/discovery/matlab-gui.html). Keep in mind that our data files will get HUGE very quickly, so we need to make sure that we use processing power and space as optimally as possible. Use MATLAB [datastore](https://www.mathworks.com/help/matlab/import_export/what-is-a-datastore.html) in order to focus on small chunks at a time without potentially bogging your computer down into oblivion. We will keep our application single threaded until we can prove that it works reliably and efficiently, only then can we think about multithreading.
+
+Read on to learn more about the car, and what exactly needs to be analyzed...
+
+### Powertrain
+The powertrain refers to all parts of the car that produce power and help deliver that power to the ground. In our case, this will refer to our Engine, CVT (Continuous Variable Transmission), and Transaxle. We currently do not have any sensors to measure anything in the transaxle, so we won't focus on that.... yet.
+
+#### Engine
+Our Baja is powered by a 10 horsepower Briggs and Stratton single cylinder engine. You read up more about our engine [here, if you wish](http://www.briggsracing.com/racing-engines/model-19). We are not allowed to modify the engine for competition in any way, per the rules. All that means for us then, is that we just have to make the most out of what we've got. So the next best thing is for us to monitor how well our Engine performs, find out what it's limitations are, plan around those, and choose gearing correctly to grant us the speed to win. We can only analyze systems that we have sensors for, however, so here is what we've got..
+* Engine RPM - via [Hall Effect](https://en.wikipedia.org/wiki/Hall_effect_sensor) sensor
+* Governor Position - via Single Turn [Potentiometer](https://en.wikipedia.org/wiki/Potentiometer)
+
+These are currently the only two sensors that we have on the engine. Both of these will better help us understand how our engine is performing. With Engine RPM, we need to be able to chart our Engine RPM as a plot. The data should not only show us, but also spell out important information about that testing run such as: our peak RPM, average RPM, rates of change, and local minima and maxima. We can then use this information and create plots to visualize information that gives us a better understanding of our system as a whole. These may look similar to plots like this..
+
+![alt text](https://qph.ec.quoracdn.net/main-qimg-a69447cd5dc3409a047fcc11d1eb950c)
+
+From this picture we can see Engine RPM plotted against Horsepower and Torque. This is a type of graph we would be able to create after running the engine on a engine or chassis [dyno](https://en.wikipedia.org/wiki/Dynamometer). We have one of those now, so thats awesome. We also need to plot Engine RPM vs. Governor position so we know exactly when it is kicking in and killing our power. From that information we can tune our clutch/transmission to keep within the acceptable power band. In the future, we may wish to add additional sensors to the engine sensor suite, I personally would like to see an [oxygen sensor](https://en.wikipedia.org/wiki/Oxygen_sensor) for the exhaust so we can monitor and predict when we run rich vs. lean, and when.
+
+#### CVT
+A [Continuous Variable Transmission](https://en.wikipedia.org/wiki/Continuously_variable_transmission) (or CVT), can be... tricky to explain. The gist of it is that we can supply the CVT with an RPM (preferably the RPM where we make the most horsepower), and the CVT will change it's gear ratio mecanically to keep the Engine RPM as constant as possible while we gain speed. In essence, that means that we can get the car moving from a low speed to it's top speed, all while delivering optimal power to the wheels. If it's your first time learning about what this even is and you find it super confusing, I get you, I've been there. Don't worry you'll get it in time. These videos might help you understand a little better what it is and why it is a good transmission for this competition.
+* [Engineering Explained - Are CVTs The Best (Fastest) Transmissions?](https://www.youtube.com/watch?v=cb6rIZfCuHI)
+* [Learn Engineering - Understanding CVT!](https://www.youtube.com/watch?v=PEq5_b4LWNY)
+
+The engine drives the primary pulley of the CVT, and the secondary pulley of the CVT is driven by the belt. We currently only have one additional sensor for CVT information.
+* Wheel RPM - via Hall Effect sensor
+
+In order to find information about the CVT from the wheel RPM sensor, we need to do a little bit of back tracking. The output shaft of the secondary CVT leads into the transaxle. Since we know what the gear ratio in the transaxle is (since it's a fixed gear ratio), we can back calculate to find what the RPM of the Secondary CVT would need to be in order to produce the output that we collect with our sensor. Once we know what the Primary CVT RPM and Secondary CVT RPM is, then we know what gear ratio we are in at that time. Neat! Currently, we are working on putting even more sensors for the CVT to measure how efficient our system is. This includes ambient air temperature sensors for inside the CVT case, and Infrared Temperature sensors for the belt. More heat == less efficient... probably.
+
+### Drivetrain
+### Chassis
+
+coming soon...
+
