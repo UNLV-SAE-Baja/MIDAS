@@ -46,6 +46,19 @@ The goal of this project is to create a comprehensive [MATLAB Toolbox](https://w
 
 Read on to learn more about the car, and what exactly needs to be analyzed...
 
+### Vehicle Sensors: Complete List
+
+* Altimeter - via RaceCapture Pro Mk/2
+* Hall Effect Sensor (x2) - for Engine RPM and Wheel RPM
+* Steering Angle Sensor - currently not installed
+* Ambient Air Temperature Sensor - to monitor current conditions
+* Infrared Temperature Sensor (x2) - to monitor CVT Belt and Brake Rotor Temperature
+* Accelerometer - via RaceCapture Pro Mk/2
+* GPS - via RaceCapture Pro Mk/2
+* 3-Axis G-Meter - via RaceCapture Pro Mk/2
+* Linear Potentiometer - for monitoring suspension position
+* Potentiometer (x3) - for monitoring Throttle, Brake and Gas Pedal positions
+
 ### Powertrain
 The powertrain refers to all parts of the car that produce power and help deliver that power to the ground. In our case, this will refer to our Engine, CVT (Continuous Variable Transmission), and Transaxle. We currently do not have any sensors to measure anything in the transaxle, so we won't focus on that.... yet.
 
