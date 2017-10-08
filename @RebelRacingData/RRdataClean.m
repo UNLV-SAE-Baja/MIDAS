@@ -9,7 +9,7 @@
 %   RebelRacingData Modifications:
 %   RRdataTable
 
-function obj = RRdataClean(obj)
+function RRdataClean(obj)
 
     %Complete removal of all NaN values from data table
     obj.RRdataTable = fillmissing(obj.RRdataTable, 'previous');
