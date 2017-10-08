@@ -43,7 +43,8 @@ classdef (ConstructOnLoad = true) RebelRacingData
         %End of Constructor Function
         
         %Function Signatures
-        obj = RRimportData(obj,filename)
+        obj = RRdataImport(obj,filename)
+        obj = RRdataClean(obj)
         
     end
     %End of Methods Section
