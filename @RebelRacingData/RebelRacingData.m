@@ -1,4 +1,4 @@
-classdef (ConstructOnLoad = true) RebelRacingData
+classdef (ConstructOnLoad = true) RebelRacingData < handle
     %RRDATA - Rebel Racing Data Object
     %   
     
@@ -43,8 +43,8 @@ classdef (ConstructOnLoad = true) RebelRacingData
         %End of Constructor Function
         
         %Function Signatures
-        obj = RRdataImport(obj,filename)
-        obj = RRdataClean(obj)
+        RRdataImport(obj,filename)
+        RRdataClean(obj)
         
     end
     %End of Methods Section

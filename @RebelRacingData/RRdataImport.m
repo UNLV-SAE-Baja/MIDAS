@@ -13,7 +13,7 @@
 %   RRdataTable.Properties.Description
 %   RRdataTable.Properties.VariableUnits
 
-function obj = RRdataImport(obj, filename)
+function RRdataImport(obj, filename)
 %% Introduction
     %Check whether or not input file is char array
     if (~ischar(filename))
