@@ -25,7 +25,7 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
     methods
         
         %RebelRacingData Constructor
-        function obj = RebelRacingData
+        function obj = RebelRacingData (filename)
                 
                 %Initialize all non-immediate class variables
                 obj.RRengineStartStop = 0; %#ok<*NASGU>
@@ -38,6 +38,11 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
                 obj.RRaccelerationStartStop = 0;
                 obj.RRdataTable = table();
                 obj.RRinputfileName = '';
+                
+                %If a file is passed to constructor
+                if nargin == 1
+                    obj.RRdataImport(filename);
+                end
        
         end
         %End of Constructor Function
