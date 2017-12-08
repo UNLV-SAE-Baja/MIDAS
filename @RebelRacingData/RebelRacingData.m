@@ -9,7 +9,8 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
        %    DYNAMICS, SLEDPULL, ACCELERATION
        % end
        
-        RRinputFileName
+        RRinputFiles
+        RRinputFileMetadata
         RRinputFileDirectory
         RRtempFileDirectory = '@RebelRacingData\temp-files';
         
@@ -23,7 +24,7 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
                 
                 %Initialize all non-immediate class variables
                 obj.RRdataTable = table();
-                obj.RRinputFileName = {};
+                obj.RRinputFiles = {};
                 obj.RRinputFileDirectory = '';
 
         end
@@ -42,6 +43,7 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
        
         %Function Signatures
         RRimportData(obj,filename)
+        
         
     end
     
