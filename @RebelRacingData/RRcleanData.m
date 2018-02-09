@@ -10,10 +10,15 @@
 %   RRdataTable
 
 function RRcleanData(obj)
-
+    %fillmissing - introduced in R2016b
+    
     %Complete removal of all NaN values from data table
     obj.RRdataTable = fillmissing(obj.RRdataTable, 'previous');
     obj.RRdataTable = fillmissing(obj.RRdataTable, 'nearest');
+    
+    %Reset interval
+    Initial = obj.RRdataTable{1,1};
+    obj.RRdataTable.Interval = obj.RRdataTable.Interval - Initial;
     
 end
 

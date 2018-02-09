@@ -35,6 +35,7 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
         RRcleanData(obj)
         RRprocessData(obj)
         RRclearFiles(obj)
+        RRimportData(obj,filename)
         
     end
     
@@ -42,7 +43,7 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
     methods (Access = private)
        
         %Function Signatures
-        RRimportData(obj,filename)
+        %RRimportData(obj,filename)
         
         
     end

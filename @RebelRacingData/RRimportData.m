@@ -25,18 +25,23 @@ function RRimportData(obj, filename)
 %% Move Imported Data to RRdataTable
     
     %Set description of the RRdataTable
-    obj.RRdataTable.Properties.Description = ['Data Table Generated From ',filename,'on',date]; 
+    obj.RRdataTable.Properties.Description = ['Data Table Generated From ',filename,' on ',date]; 
     
 %% Variable Names and Units
 
     tempVar = obj.RRdataTable.Properties.VariableNames;
-    
+    unitArray = cell(1,length(tempVar));
     for i = 1:length(tempVar)
     
         cnt = 0;
-        strtPos = 0;
-        endPos = 0;
+        strtPos = 0; %#ok<NASGU>
+        endPos = 0; %#ok<NASGU>
         columnName = ''; %#ok<NASGU>
+        
+        %This underscoreCheck will be used to ensure that only a single
+        %space in the variable name or the variable units can be accounted
+        %for
+        underscoreCheck = 0;
 
         cellContents = tempVar{i};
                 
@@ -49,19 +54,32 @@ function RRimportData(obj, filename)
                 switch cnt
                     case 1
                         strtPos = j;
-                        while (cellContents(j) <= 'z' && cellContents(j) >= 'a') || (cellContents(j) <= 'Z' && cellContents(j) >= 'A') || (cellContents(j) >= '0' && cellContents(j) <= '9')
+                        while (cellContents(j) <= 'z' && cellContents(j) >= 'a') || (cellContents(j) <= 'Z' && cellContents(j) >= 'A') || (cellContents(j) >= '0' && cellContents(j) <= '9') || (cellContents(j) == '_' && underscoreCheck == 0)
+                            if cellContents(j) == '_'
+                                underscoreCheck = 1;
+                            end
                             j = j + 1;
                         end
                         endPos = j - 1;
+                        if cellContents(endPos) == '_'
+                            endPos = endPos - 1;
+                        end
                         columnName = cellContents(strtPos:endPos);
                         obj.RRdataTable.Properties.VariableNames{i} = columnName;
                         
                     case 2
+                        underscoreCheck = 0;
                         strtPos = j;
-                        while (cellContents(j) < 'z' && cellContents(j) > 'a') || (cellContents(j) < 'Z' && cellContents(j) > 'A') || (cellContents(j) > '0' && cellContents(j) < '9')
+                        while (cellContents(j) <= 'z' && cellContents(j) >= 'a') || (cellContents(j) <= 'Z' && cellContents(j) >= 'A') || (cellContents(j) >= '0' && cellContents(j) <= '9') || (cellContents(j) == '_' && underscoreCheck == 0)
+                            if cellContents(j) == '_'
+                                underscoreCheck = 1;
+                            end
                             j = j + 1;
                         end
                         endPos = j - 1;
+                        if cellContents(endPos) == '_'
+                            endPos = endPos - 1;
+                        end
                         unitArray{i} = char(cellContents(strtPos:endPos));
                            
                 end
