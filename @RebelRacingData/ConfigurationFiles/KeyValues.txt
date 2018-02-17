@@ -1,4 +1,5 @@
 Key,Value
+Interval, Interval
 EngineRPM, Engine_RPM
 engineRPM, Engine_RPM
 Engine, Engine_RPM
@@ -7,7 +8,6 @@ Rpm, Engine_RPM
 rpm, Engine_RPM
 Utc, UTC
 UTC, UTC
-Analog1, Analog1
 Battery, Battery
 AccelX, Acceleration_X
 AccelY, Acceleration_Y
@@ -31,3 +31,4 @@ SectorTime, Sector_Time
 PredTime, Predicted_Time
 ElapsedTime, Elapsed_Time
 CurrentLap, Current_Lap
+RPM, Axle_RPM

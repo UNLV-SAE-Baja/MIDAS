@@ -40,3 +40,7 @@ obj.RRimportData(newFile);
 
 %Delete temporary input file
 delete(newFile);
+
+%Create Standards
+obj.RRcreateTestAccessInfo;
+end

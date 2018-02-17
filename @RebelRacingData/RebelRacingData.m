@@ -6,14 +6,16 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
         RRdataTable
         RRdataProperties
         RRinputFile
+        RRtestAccess
+        RRdictionary
         %RRinputFileMetadata
         %RRinputFileDirectory
         %RRtempFileDirectory = '@RebelRacingData\temp-files';
     end
     
     properties (Access = private)
-       RRvariableMap
-       RRtestAccess
+      %  RRdictionary
+      % RRtestAccess
     end
     
     %Public Methods
@@ -23,16 +25,15 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
             %Initialize all non-immediate class variables
             obj.RRdataTable = table();
             %Create variable map
-            obj.RRcreateVariableMap;
-            %Create struct to hold test validators
-            obj.RRcreateTestAccessInfo;
+            obj.RRcreateDictionary;
         end
         %End of Constructor Function
         
         %Function Signatures
         RRselectFile(obj)
         RRcleanData(obj)
-        RRprocessData(obj) 
+        RRprocessData(obj)
+        RRvalidateVariables(obj)
     end
     
     %Private Methods
@@ -40,7 +41,7 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
        
         %Function Signatures
         RRimportData(obj,filename)
-        RRcreateVariableMap(obj)
+        RRcreateDictionary(obj)
         RRcreateTestAccessInfo(obj)
         
     end
