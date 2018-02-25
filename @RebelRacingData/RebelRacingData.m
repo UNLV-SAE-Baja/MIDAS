@@ -6,16 +6,15 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
         RRdataTable
         RRdataProperties
         RRinputFile
-        RRtestAccess
-        RRdictionary
         %RRinputFileMetadata
         %RRinputFileDirectory
         %RRtempFileDirectory = '@RebelRacingData\temp-files';
     end
     
     properties (Access = private)
-      %  RRdictionary
-      % RRtestAccess
+       RRdictionary
+       RRtestAccess
+       RRoutputFileDirectory
     end
     
     %Public Methods
@@ -32,8 +31,17 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
         %Function Signatures
         RRselectFile(obj)
         RRcleanData(obj)
-        RRprocessData(obj)
-        RRvalidateVariables(obj)
+        %RRprocessData(obj)
+        RRlinkVariable(obj, var, standard)
+        RRlinkVariableGUI(obj)
+  out = RRunlinked(obj)
+  out = RRlinked(obj)
+        RRsetOutputDirectory(obj)
+  out = RRgetUnits(obj, standard)
+        
+        %Plotting Functions
+        RRbatteryVtime(obj)
+
     end
     
     %Private Methods
@@ -43,7 +51,12 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
         RRimportData(obj,filename)
         RRcreateDictionary(obj)
         RRcreateTestAccessInfo(obj)
+        RRvalidateVariables(obj)
+  out = RRtestAccessStatus(obj, status, fieldname)
+  out = RRtestAccessVariable(obj, fieldname)
+
         
+
     end
     
 end

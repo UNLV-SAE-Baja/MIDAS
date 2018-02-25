@@ -6,8 +6,8 @@ function RRvalidateVariables(obj)
 %   'VariableName' and 'Valid' flag will be set. However there are several
 %   events that will cause a warning or an error. The 'Valid' field will be
 %   set with the following value based on the criteria:
-%    0:Unset - No variable has been linked to this standard
-%    1:Set - One variable has been linked to this standard
+%    0:Unlinked - No variable has been linked to this standard
+%    1:Linked - One variable has been linked to this standard
 %   -1:Conflict - Two (or more) variables are mapped to the same standard data type
 %   -2:Under-Defined - A variable is mapped to two (or more) standards
 %    ~:Miss - A variable does not match any defined standard data type
@@ -115,7 +115,7 @@ if (conflicts ~= 0) || (miss ~= 0) || (underdefined ~= 0)
     end
     
     
-    msg = sprintf('Some variables are in need of attention. Use "help RRdefineVariable" for information to set variables manually, as necessary.\nConflict Count: %i\nConflict Variables: %s\nMiss Count: %i\nMissed Variables: %s\nUnderdefined Count: %i\nUnderdefined Variables: %s',...
+    msg = sprintf('Some variables are in need of attention. Use "help RRlinkVariable" or "help RRlinkVariableGUI" for information to set variables manually, as necessary.\nConflict Count: %i\nConflict Variables: %s\nMiss Count: %i\nMissed Variables: %s\nUnderdefined Count: %i\nUnderdefined Variables: %s',...
                   conflicts,conflictStr,miss,missStr,underdefined,underdefinedStr);
     warning(msg); %#ok<SPWRN>
 end

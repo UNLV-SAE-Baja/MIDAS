@@ -2,17 +2,16 @@ function RRcreateTestAccessInfo(obj)
 %RRcreateTestAccessStruct will create the data structure that will allow
 %MATLAB to more easily distinguish which tests will be allowed to run based
 %on the variables provided by the input file.
-    %This struct will hold all the standard names for specific variables about
-    %the car. This will help to maintain continuity among all differrent data
-    %sets, some of which, may have ambiguous naming choices. This will
-    %allow for a standard among publications from these tools.
+%   This struct will hold all the standard names for specific variables about
+%   the car. This will help to maintain continuity among all differrent data
+%   sets, some of which, may have ambiguous naming choices. This will
+%   allow for a standard among publications from these tools.
 
 
 %% Create the Empty Struct with Standard Field Names
 
 tempStruct = struct('Interval',[],...
                     'UTC',[],...
-                    'Analog1',[],...
                     'Battery',[],...
                     'Acceleration_X',[],...
                     'Acceleration_Y',[],...
@@ -50,7 +49,6 @@ tempStruct = struct('Interval',[],...
 
 tempStruct = setfield(tempStruct,'Interval',struct('StandardName','Interval','VariableName',[],'Valid',0)); %#ok<*SFLD>
 tempStruct = setfield(tempStruct,'UTC',struct('StandardName','UTC','VariableName',[],'Valid',0));
-tempStruct = setfield(tempStruct,'Analog1',struct('StandardName','Analog1','VariableName',[],'Valid',0));
 tempStruct = setfield(tempStruct,'Battery',struct('StandardName','Battery','VariableName',[],'Valid',0));
 tempStruct = setfield(tempStruct,'Acceleration_X',struct('StandardName','Acceleration_X','VariableName',[],'Valid',0));
 tempStruct = setfield(tempStruct,'Acceleration_Y',struct('StandardName','Acceleration_Y','VariableName',[],'Valid',0));

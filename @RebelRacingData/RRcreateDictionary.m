@@ -15,7 +15,27 @@ valueSet = tempTable.Value';
 
 %% Populate the Map Container
 
-obj.RRdictionary = containers.Map(keySet, valueSet);
+tempDictionary1 = containers.Map(keySet, valueSet);
+tempDictionary2 = containers.Map;
 
+%Move all duplicates to tempDictionary2, when the single keys are added to
+%the dictionary afterwards, they will not be overwritten.
+for i = 1:length(keySet)
+    for j = (i+1):length(keySet)
+        str1 = tempDictionary1(keySet{i});
+        str2 = tempDictionary1(keySet{j});
+        if strcmp(str1,str2)
+            tempDictionary2(keySet{i}) = valueSet{i};
+            tempDictionary2(keySet{j}) = tempDictionary2(keySet{i});
+        end
+    end
+end
+
+%Add all the single key value pairs to the tempDictionary2
+for i = 1:length(keySet)
+    tempDictionary2(keySet{i}) = valueSet{i};
+end
+
+obj.RRdictionary = tempDictionary2;
 end
 

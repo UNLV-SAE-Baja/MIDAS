@@ -43,4 +43,7 @@ delete(newFile);
 
 %Create Standards
 obj.RRcreateTestAccessInfo;
+
+%Link Variables
+obj.RRvalidateVariables;
 end
