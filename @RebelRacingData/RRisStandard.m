@@ -13,9 +13,10 @@ end
 %% Determine Validity
 
 fields = fieldnames(obj.RRtestAccess);
+tf = false;
 
 for i = 1:length(fields)
-    if query == fields{i}
+    if strcmp(fields{i}, query)
         tf = true;
     end
 end

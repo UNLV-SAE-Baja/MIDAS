@@ -38,6 +38,8 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
   out = RRlinked(obj)
         RRsetOutputDirectory(obj)
   out = RRgetUnits(obj, standard)
+  out = RRgetStandard(obj, var)
+  out = RRgetVariable(obj, standard)
   tf  = RRisStandard(obj, query)
   tf  = RRisVariable(obj, query)
   [tf, out]  = RRisLinked(obj, query)
