@@ -11,7 +11,7 @@ if class(obj) ~= 'RebelRacingData'
     error('Object %s is not of type RebelRacingData',obj);
 end
 
-if RRtestAccessStatus(obj,'unlinked','Interval') || RRtestAccessStatus(obj,'unlinked','Battery')
+if RRtestAccessStatus(obj,'unlinked','Time') || RRtestAccessStatus(obj,'unlinked','Battery')
     error('Either standard "Interval" or "Battery" are unlinked');
 end
 
@@ -26,7 +26,7 @@ fig = figure('Name',figName,...
              'Visible', 'off');
 
 batt = RRtestAccessVariable(obj,'Battery');
-time = RRtestAccessVariable(obj,'Interval');
+time = RRtestAccessVariable(obj,'Time');
 
 plot(obj.RRdataTable.(time),obj.RRdataTable.(batt),...
      'Color', [0.9607, 0.0, 0.1843]); %Scarlett [245, 0, 47]
@@ -34,7 +34,7 @@ plot(obj.RRdataTable.(time),obj.RRdataTable.(batt),...
 title('Battery Voltage over Time');
 axis([0 inf 0 5]);
 
-xunits = RRgetUnits(obj, 'Interval');
+xunits = RRgetUnits(obj, 'Time');
 xlabel(strcat('Time',xunits));
 
 yunits = RRgetUnits(obj, 'Battery');

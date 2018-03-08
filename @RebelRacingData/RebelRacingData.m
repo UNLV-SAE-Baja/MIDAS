@@ -38,6 +38,10 @@ classdef (ConstructOnLoad = true) RebelRacingData < handle
   out = RRlinked(obj)
         RRsetOutputDirectory(obj)
   out = RRgetUnits(obj, standard)
+  tf  = RRisStandard(obj, query)
+  tf  = RRisVariable(obj, query)
+  [tf, out]  = RRisLinked(obj, query)
+        RRplot(obj, variable, var)
         
         %Plotting Functions
         RRbatteryVtime(obj)

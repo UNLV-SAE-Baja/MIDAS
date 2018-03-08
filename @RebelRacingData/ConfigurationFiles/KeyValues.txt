@@ -1,7 +1,16 @@
 Key,Value
-Interval, Interval
-interval, Interval
-Engine_RPM
+Time, Time
+Seconds, Time
+seconds, Time
+Sec, Time
+sec, Time
+Minutes, Time
+minutes, Time
+min, Time
+Min, Time
+Interval, Time
+interval, Time
+Engine_RPM, Engine_RPM
 EngineRPM, Engine_RPM
 engineRPM, Engine_RPM
 eRPM, Engine_RPM

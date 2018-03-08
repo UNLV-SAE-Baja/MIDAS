@@ -8,7 +8,7 @@ function RRlinkVariable (obj, var, standard)
 %   RRlinkVariable(obj,variables,standards)
 %
 %   Standards:
-%   Interval
+%   Time
 %   UTC
 %   Battery
 %   Acceleration_X
