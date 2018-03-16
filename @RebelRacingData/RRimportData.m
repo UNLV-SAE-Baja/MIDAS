@@ -8,7 +8,10 @@
 %   Outputs: N/A
 
 %   RebelRacingData Modifications:
+%   RRname
 %   RRdataTable
+%   RRdataProperties
+%   RRinputFile
 %   RRdataTable.Properties.Description
 %   RRdataTable.Properties.VariableUnits
 
@@ -18,14 +21,20 @@ function RRimportData(obj, filename)
     if (~ischar(filename))
         error("Error: Not a file");
     end
+    
+    %Break the file down into constituent parts in order to fill in class
+    %variables
+    [~, name, ext] = fileparts(filename);
+    obj.RRname = name;
+    obj.RRinputFile = [name ext];
             
     %Import the file into memory with readTable
-    obj.RRdataTable = readtable(fullfile(obj.RRtempFileDirectory,filename));
+    obj.RRdataTable = readtable(filename);
 
 %% Move Imported Data to RRdataTable
     
     %Set description of the RRdataTable
-    obj.RRdataTable.Properties.Description = ['Data Table Generated From ',filename,' on ',date]; 
+    obj.RRdataTable.Properties.Description = ['Data Table Generated From ',[name ext],' on ',date]; 
     
 %% Variable Names and Units
 
@@ -98,5 +107,11 @@ function RRimportData(obj, filename)
      
     %Populate variable units information
     obj.RRdataTable.Properties.VariableUnits = unitArray;
-        
+    
+%% Update Properties
+    %Move the properties into a class variable that is a little more
+    %visible, and create more redundancy. 
+    
+    obj.RRdataProperties = obj.RRdataTable.Properties;
+ 
 end
